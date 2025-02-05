@@ -64,15 +64,6 @@ void RemoteJSONPoll::pollingThread()
         // don't try to fetch from an empty URI
         bool valid = !remoteServerURI.empty();
 
-#if !ENABLE_DEBUG
-        if (Util::iequal(remoteServerURI.getScheme(), "http"))
-        {
-            LOG_ERR(
-                "Remote config url should only use HTTPS protocol: " << remoteServerURI.toString());
-            valid = false;
-        }
-#endif
-
         if (valid)
         {
             try
